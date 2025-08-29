@@ -4,33 +4,35 @@ import { ShoppingCart, Search } from "lucide-react";
 import logoUrl from "../../assets/logo.jpg";
 import AuthModal from "../Layout/AuthModal";
 import ProfileMenu from "../Layout/ProfileMenu";
-import CategoryPanel from "../CategoryPanel.tsx";
-
+import CategoryPanel from "../CategoryPanel";
+import SearchComponent from "../Layout/SearchComponent.tsx";
 
 const MainHeader = () => {
     const [isAuthOpen, setIsAuthOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userName, setUserName] = useState<string | undefined>();
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
 
 
     return (
         <>
             <header className="mx-12 h-20  bg-white flex items-center justify-between relative">
-                    {/*
-             <button
-                onClick={() => setIsSearchOpen(true)}
-                className="p-2 hover:text-pink-500 transition-colors"
-            >
-                <Search size={24} />
-            </button>
-            */}
+
                 <div className="flex items-center">
-                    <button className="hover:text-pink-500 transition-colors">
+                    <button
+                        onClick={() => setIsSearchOpen(true)}
+                        className="hover:text-pink-500 transition-colors"
+                    >
                         <Search size={24}/>
                     </button>
+
+                    {/* фейкові продукти*/}
+                    <SearchComponent
+                        isOpen={isSearchOpen}
+                        onClose={() => setIsSearchOpen(false)}
+                    />
                 </div>
 
-                {/* Лого по центру */}
                 <Link
                     to="/"
                     className="absolute left-1/2 -translate-x-1/2 flex justify-center"
@@ -42,7 +44,6 @@ const MainHeader = () => {
                     />
                 </Link>
 
-                {/* Права частина */}
                 <div className="flex items-center gap-4 ml-auto">
                     <ProfileMenu
                         isLoggedIn={isLoggedIn}
