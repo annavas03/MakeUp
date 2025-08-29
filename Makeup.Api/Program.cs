@@ -1,22 +1,19 @@
-using Makeup.Infrastructure;
+﻿using Makeup.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(
+        builder.Configuration.GetConnectionString("Supabase"),
+        b => b.MigrationsAssembly("Makeup.Infrastructure")
+    )
+);
 
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
