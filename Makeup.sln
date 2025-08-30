@@ -3,10 +3,36 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makeup.Api", "Makeup.Api\Makeup.Api.csproj", "{40D27C37-1231-4582-A68D-2CB37DBD2C6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makeup.Application", "Makeup.Application\Makeup.Application.csproj", "{40D27C37-1232-4582-A68D-2CB37DBD2C6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makeup.Domain", "Makeup.Domain\Makeup.Domain.csproj", "{40D27C37-1233-4582-A68D-2CB37DBD2C6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Makeup.Infrastructure", "Makeup.Infrastructure\Makeup.Infrastructure.csproj", "{29BD04C3-FBC5-4F3F-804E-D9E2D43B2ED8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40D27C37-1231-4582-A68D-2CB37DBD2C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40D27C37-1231-4582-A68D-2CB37DBD2C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40D27C37-1231-4582-A68D-2CB37DBD2C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40D27C37-1231-4582-A68D-2CB37DBD2C6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40D27C37-1232-4582-A68D-2CB37DBD2C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40D27C37-1232-4582-A68D-2CB37DBD2C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40D27C37-1232-4582-A68D-2CB37DBD2C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40D27C37-1232-4582-A68D-2CB37DBD2C6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40D27C37-1233-4582-A68D-2CB37DBD2C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40D27C37-1233-4582-A68D-2CB37DBD2C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40D27C37-1233-4582-A68D-2CB37DBD2C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40D27C37-1233-4582-A68D-2CB37DBD2C6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29BD04C3-FBC5-4F3F-804E-D9E2D43B2ED8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29BD04C3-FBC5-4F3F-804E-D9E2D43B2ED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29BD04C3-FBC5-4F3F-804E-D9E2D43B2ED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29BD04C3-FBC5-4F3F-804E-D9E2D43B2ED8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
