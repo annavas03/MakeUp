@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Makeup.Domain.Entities;
+using Makeup.Infrastructure;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
+namespace Makeup.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
