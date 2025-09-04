@@ -18,18 +18,21 @@ namespace Makeup.Domain.Entities
         public int Id { get; set; }
 
         [Required, MaxLength(15)]
-        public string Username { get; set; }
+        public string Username { get; set; } = string.Empty;
 
         [Required, EmailAddress]
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
         [Required, MaxLength(255)]
-        public string PasswordHash { get; set; }
+        public string PasswordHash { get; set; } = string.Empty;
 
         [Required]
         public Role Role { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        public ICollection<Order> Orders { get; set; } = new List<Order>();
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
 
     [Table("Brands")]
@@ -39,12 +42,12 @@ namespace Makeup.Domain.Entities
         public int Id { get; set; }
 
         [Required, MaxLength(100)]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [MaxLength(200)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
-        public ICollection<Product> Products { get; set; }
+        public ICollection<Product> Products { get; set; } = new List<Product>();
     }
 
     [Table("Products")]
@@ -54,26 +57,27 @@ namespace Makeup.Domain.Entities
         public int Id { get; set; }
 
         [Required, MaxLength(100)]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [Required]
         public decimal Price { get; set; }
 
         [MaxLength(500)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [MaxLength(255)]
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
 
         [Required]
         public int BrandId { get; set; }
-        public Brand Brand { get; set; }
+        public Brand Brand { get; set; } = null!;
 
         [Required]
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public Category Category { get; set; } = null!;
 
-        public ICollection<OrderItem> OrderItems { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
 
     [Table("Categories")]
@@ -83,12 +87,12 @@ namespace Makeup.Domain.Entities
         public int Id { get; set; }
 
         [Required, MaxLength(50)]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [MaxLength(200)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
-        public ICollection<Product> Products { get; set; }
+        public ICollection<Product> Products { get; set; } = new List<Product>();
     }
 
     public enum Status
@@ -108,7 +112,7 @@ namespace Makeup.Domain.Entities
 
         [Required]
         public int UserId { get; set; }
-        public User User { get; set; }
+        public User User { get; set; } = null!;
 
         [Required]
         public DateTime OrderDate { get; set; } = DateTime.UtcNow;
@@ -118,7 +122,7 @@ namespace Makeup.Domain.Entities
 
         public Status Status { get; set; } = Status.Pending;
 
-        public ICollection<OrderItem> Items { get; set; }
+        public ICollection<OrderItem> Items { get; set; } = new List<OrderItem>();
     }
 
     [Table("Reviews")]
@@ -129,17 +133,17 @@ namespace Makeup.Domain.Entities
 
         [Required]
         public int ProductId { get; set; }
-        public Product Product { get; set; }
+        public Product Product { get; set; } = null!;
 
         [Required]
         public int UserId { get; set; }
-        public User User { get; set; }
+        public User User { get; set; } = null!;
 
         [Required, Range(1, 5)]
         public int Rating { get; set; }
 
         [MaxLength(500)]
-        public string Comment { get; set; }
+        public string? Comment { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
@@ -152,11 +156,11 @@ namespace Makeup.Domain.Entities
 
         [Required]
         public int OrderId { get; set; }
-        public Order Order { get; set; }
+        public Order Order { get; set; } = null!;
 
         [Required]
         public int ProductId { get; set; }
-        public Product Product { get; set; }
+        public Product Product { get; set; } = null!;
 
         [Required]
         public int Quantity { get; set; }
