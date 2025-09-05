@@ -72,22 +72,22 @@ const CarouselComponent: FC<CarouselProps> = ({ images }) => {
 };
 
 
- /*
+/*
 const [images, setImages] = useState<string[]>([]);
 
 useEffect(() => {
-  fetch("http://localhost:5000/api/images")
-    .then(res => res.json())
-    .then(data => {
-      // якщо масив  →  img.url
-      const normalized = data.map((img: any) =>
-        typeof img === "string" ? img : img.url
-      );
-      setImages(normalized);
-    })
-    .catch(err => {
-      console.error("Помилка завантаження зображень:", err);
-    });
+ fetch("http://localhost:5000/api/images")
+   .then(res => res.json())
+   .then(data => {
+     // якщо масив  →  img.url
+     const normalized = data.map((img: any) =>
+       typeof img === "string" ? img : img.url
+     );
+     setImages(normalized);
+   })
+   .catch(err => {
+     console.error("Помилка завантаження зображень:", err);
+   });
 }, []);
 */
 
