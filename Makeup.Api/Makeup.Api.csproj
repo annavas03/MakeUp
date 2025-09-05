@@ -22,5 +22,5 @@
     <ProjectReference Include="..\Makeup.Application\Makeup.Application.csproj" />
     <ProjectReference Include="..\Makeup.Infrastructure\Makeup.Infrastructure.csproj" />
   </ItemGroup>
-
+	
 </Project>
