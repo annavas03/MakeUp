@@ -6,20 +6,44 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(
         builder.Configuration.GetConnectionString("Supabase"),
-        b => b.MigrationsAssembly("Makeup.Infrastructure")
-    )
+        b => b.MigrationsAssembly("Makeup.Infrastructure"))
 );
 
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.UseSwagger();
-app.UseSwaggerUI();
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
-//app.UseHttpsRedirection();
+    try
+    {
+        db.Database.Migrate();
+
+        var jsonPath = Path.Combine(Directory.GetCurrentDirectory(), "cosmetics.json");
+        DbSeeder.SeedFromJson(db, jsonPath);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("Error during DB migration/seeding: " + ex.Message);
+        throw; 
+    }
+}
+
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+
+app.MapGet("/", () => "Makeup API is running");
 
 app.Run();
